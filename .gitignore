@@ -2,14 +2,35 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/framework/*
 /vendor
-.env
-.env.backup
-.phpunit.result.cache
-docker-compose.override.yml
+/.idea
+/.vscode
+/.vagrant
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/.idea
-/.vscode
+.env
+
+# Vim file
+*.swp
+*.swo
+
+# MacOSx
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+*.tmp
