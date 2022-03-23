@@ -13,35 +13,42 @@
                 </div>
                 <div>
                     <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
+                        <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">email</th>
+                              <th scope="col">Created Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <th scope="row">{{ (($users->currentPage() - 1 ) * $users->perPage()) + $loop->iteration }}.</th>
+                                <td>
+                                    <a href="{{ route('users.show', $user->id) }}">
+                                        {{ $user->name }}
+                                    </a>
+                                </td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ date('d M Y', strtotime($user->created_at)) }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
                     </table>
+                    <div class="text-center">
+                        <ul class="list-inline small text-muted">
+                            <li>
+                                Page {{ $users->currentPage() }} of
+                                {{ $users->lastPage() }}, showing
+                                {{ $users->lastItem() - $users->firstItem() + 1 }}
+                                records out of {{ $users->total() }} total,
+                                starting on record {{ $users->firstItem() }}, ending on
+                                {{ $users->lastItem() }}
+                            </li>
+                        </ul>
+                        {{ $users->appends(Request::except('page'))->links() }}
+                    </div>
                 </div>
             </div>
         </div>
