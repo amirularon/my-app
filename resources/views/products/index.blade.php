@@ -10,18 +10,26 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     Products List
-                </div>
+                
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <button class="pull-right">
+                        <a class="btn btn-success" href="create" title="Create product"> <i class="fas fa-plus-circle">Create New Product</i>
+                    </a></button></div>
 
-                <div class="pull-right">
-                    <a class="btn btn-success" href="" title="Create a product"> <i class="fas fa-plus-circle"></i>
-                    </a>
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                </form></div>
+
+
                 </div>
 
                 <div>
                     <table class="table table-bordered table-responsive-lg">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price (RM)</th>
                                 <th scope="col">Details</th>
@@ -33,10 +41,19 @@
                         <tr>    
                             <td>{{ (($products->currentPage() - 1 ) * $products->perPage()) + $loop->iteration }}.</td>
                             <td>{{ $product->name }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $product->price  }}</td>
+                            <td>{{ $product->details }}</td>
+                            <td>{{ $product->publish }}</td>
+                            <td>{{ $product->action }}
+
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <div><button type="button" class="btn btn-info">Show</button></div>
+                                <div><button type="button" class="btn btn-primary">Edit</button></div>
+                                <div><button type="button" class="btn btn-danger">Delete</button></div>
+                            </div>
+
+
+                            </td>
                         </tr>
                         @endforeach
                     </table>
