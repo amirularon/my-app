@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('products.store');
     }
 
     /**
@@ -59,7 +59,7 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**

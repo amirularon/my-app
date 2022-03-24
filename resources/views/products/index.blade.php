@@ -13,7 +13,7 @@
                 
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <button class="pull-right">
-                        <a class="btn btn-success" href="create" title="Create product"> <i class="fas fa-plus-circle">Create New Product</i>
+                        <a class="btn btn-success" href="{{ route('products.create')}}" title="Create product" class="fas fa-plus-circle">Create New Product
                     </a></button></div>
 
                 <div class="d-flex flex-row-reverse bd-highlight">
@@ -21,8 +21,6 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                 </form></div>
-
-
                 </div>
 
                 <div>
@@ -47,12 +45,10 @@
                             <td>{{ $product->action }}
 
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <div><button type="button" class="btn btn-info">Show</button></div>
-                                <div><button type="button" class="btn btn-primary">Edit</button></div>
-                                <div><button type="button" class="btn btn-danger">Delete</button></div>
+                                <div><a type="button" href="{{ route('products.show', $product->id) }}" class="btn btn-info">Show</a></div>
+                                <div><a type="button" href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a></div>
+                                <div><a type="button" class="btn btn-danger">Delete</a></div>
                             </div>
-
-
                             </td>
                         </tr>
                         @endforeach
