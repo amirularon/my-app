@@ -12,6 +12,12 @@
                     Users List
                 </div>
                 <div>
+                    <div>
+                        <a href="{{ route('users.create') }}">
+                            Create User
+                        </a>
+                    </div>
+                    
                     <table class="table">
                         <thead>
                             <tr>
@@ -19,6 +25,7 @@
                               <th scope="col">Name</th>
                               <th scope="col">email</th>
                               <th scope="col">Created Date</th>
+                              <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +39,11 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ date('d M Y', strtotime($user->created_at)) }}</td>
+                                <td>
+                                    <a href="{{ route('users.edit', $user->id) }}">
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

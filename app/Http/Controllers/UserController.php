@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->merge(['password' => bcrypt($request->password)]);
+        User::create($request->all());
+        return redirect()->route('users.index');
     }
 
     /**
@@ -58,7 +60,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -70,7 +72,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->merge(['password' => bcrypt($request->password)]);
+        $user->update($request->all());
+        return redirect()->route('users.show', $user);
     }
 
     /**
@@ -81,6 +85,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
