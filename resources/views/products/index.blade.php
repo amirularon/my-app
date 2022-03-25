@@ -11,19 +11,29 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Products List
                 
-                <div class="d-flex flex-row-reverse bd-highlight">
+                <td class="d-flex flex-row-reverse bd-highlight">
                     <button class="pull-right">
                         <a class="btn btn-success" href="{{ route('products.create')}}" title="Create product" class="fas fa-plus-circle">Create New Product
-                    </a></button></div>
+                    </a></button></td>
 
-                <div class="d-flex flex-row-reverse bd-highlight">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                </form></div>
-                </div>
+                <form action="{{ route('products.index') }}" method="GET" role="search">
+                        <div class="form-group">
+                        <div class="d-flex flex-row-reverse bd-highlight">
+                            <button style='margin-bottom:16px' class="btn btn-outline-secondary" 
+                                type="submit">Search
+                            </button>
 
-                <div>
+                            {{ Form::input('text', 'search', null, ['placeholder' => 'Search', 'required' => true, 'style' => 'margin-bottom:16px']) }}
+
+                            <a href="{{ route('products.index') }}" class=" mt-1">
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+</a>
+                        <div></div>
+                        
+                        
+                    </div></div>
+                </form>
+                    
                     <table class="table table-bordered table-responsive-lg">
                         <thead>
                             <tr>
@@ -45,9 +55,15 @@
                             <td>{{ $product->action }}
 
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <div><a type="button" href="{{ route('products.show', $product->id) }}" class="btn btn-info">Show</a></div>
-                                <div><a type="button" href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a></div>
-                                <div><a type="button" class="btn btn-danger">Delete</a>
+                                <div><a style='margin-right:16px' type="button" href="{{ route('products.show', $product->id) }}" class="btn btn-info">Show</a></div>
+                                <div><a style='margin-right:16px' type="button" href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a></div>
+                                <div><form method="post" action="{{route('products.destroy',$product->id)}}">
+                                    @method('delete')
+                                    @csrf
+                            <button type="submit" class="btn btn-danger btn">Delete</button>
+
+
+                        </form>
                             </div>
                             </td>
                         </tr>

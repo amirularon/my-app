@@ -11,10 +11,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Showing Products 
                 
-        <div class="d-flex flex-row-reverse bd-highlight">
+        <td class="d-flex flex-row-reverse bd-highlight">
           <button class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.index')}}" title="Create product" class="fas fa-plus-circle">Back
-                </a></button></div></div>
+                <a class="btn btn-primary" href="{{ route('products.index')}}" title="Create product" class="fas fa-plus-circle">Back
+                </a></button></td></div>
 
                 <div class="container">
                     <div class="row">
